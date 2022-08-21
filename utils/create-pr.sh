@@ -43,8 +43,6 @@ cd "$repo_name"
 echo "git status"
 git status
 
-echo "git pull"
-git pull
 
 # Create a new branch 
 deploy_branch_name=deploy/$DEPLOY_ID/$BACKEND_IMAGE/$DEST_BRANCH
@@ -58,6 +56,9 @@ cp -r $SOURCE_FOLDER/* $DEST_FOLDER/
 git add -A
 git status
 if [[ `git status --porcelain | head -1` ]]; then
+    echo "git pull"
+    git pull
+    
     git commit -m "deployment $DEPLOY_ID"
 
     # Push to the deploy branch 
