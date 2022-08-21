@@ -55,6 +55,7 @@ cp -r $SOURCE_FOLDER/* $DEST_FOLDER/
 git add -A
 git status
 if [[ `git status --porcelain | head -1` ]]; then
+    git pull
     git commit -m "deployment $DEPLOY_ID"
 
     # Push to the deploy branch 
